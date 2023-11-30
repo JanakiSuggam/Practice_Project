@@ -13,7 +13,7 @@ jobs:
       - name: Linting
         run: npm Lint
   Test:
-    needs: List
+    needs: Lint
     runs-on: ubuntu-latest
     steps:
       - name: Upload code to server
