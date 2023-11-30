@@ -1,0 +1,15 @@
+name: Deploy
+on: push
+jobs:
+  Test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Upload code to server
+        uses: actions/checkout@v4
+      - name: Installing software
+        run: npm install
+      - name: Installing packages
+        run: npm 
+      - name: testing
+        run: test
+      
