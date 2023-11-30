@@ -1,7 +1,19 @@
 name: Deploy
 on: push
 jobs:
+  List:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Upload code to server
+        uses: actions/checkout@v4
+      - name: Installing software
+        uses: actions/setup-node@v4
+      - name: Installing packages
+        run: npm ci
+      - name: tListing
+        run: npm List
   Test:
+    needs: List
     runs-on: ubuntu-latest
     steps:
       - name: Upload code to server
@@ -12,4 +24,18 @@ jobs:
         run: npm ci
       - name: testing
         run: npm test
+  Deploy:
+    needs: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Upload code to server
+        uses: actions/checkout@v4
+      - name: Installing software
+        uses: actions/setup-node@v4
+      - name: Installing packages
+        run: npm ci
+      - name: Build project
+        run: npm build
+      - name: Deploy
+        run: echo "Deploying...."
       
