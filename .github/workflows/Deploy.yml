@@ -7,9 +7,9 @@ jobs:
       - name: Upload code to server
         uses: actions/checkout@v4
       - name: Installing software
-        run: npm install
+        run: npm install 
       - name: Installing packages
-        run: npm 
+        uses: actions/setup-node@v4
       - name: testing
-        run: test
+        run: npm test
       
